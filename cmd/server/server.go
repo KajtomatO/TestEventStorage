@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Hello world.")
+	server := &DataServer{NewInMemoryDataStore()}
+	log.Fatal(http.ListenAndServe(":5000", server))
 }
