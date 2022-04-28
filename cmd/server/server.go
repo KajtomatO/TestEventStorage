@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"net/http"
+
+	"github.com/KajtomatO/TestEventStorage/internal/app/server_lib"
+	"github.com/KajtomatO/TestEventStorage/internal/app/storage_memory"
+)
 
 func main() {
-	fmt.Println("Hello world.")
+	server := &server_lib.DataServer{storage_memory.NewInMemoryDataStore()}
+	log.Fatal(http.ListenAndServe(":5000", server))
 }
