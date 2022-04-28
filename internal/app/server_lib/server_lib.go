@@ -12,7 +12,7 @@ type DataStore interface {
 }
 
 type DataServer struct {
-	store DataStore
+	Store DataStore
 }
 
 func (p *DataServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -26,7 +26,7 @@ func (p *DataServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (p *DataServer) readData(w http.ResponseWriter, user string) {
-	data, err := p.store.GetDataRecord(user)
+	data, err := p.Store.GetDataRecord(user)
 
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
@@ -40,7 +40,7 @@ func (p *DataServer) writeData(w http.ResponseWriter, input string) {
 	if len(inputSplited) == 2 {
 		user := strings.TrimSuffix(inputSplited[0], "/")
 		data := inputSplited[1]
-		p.store.SetDataRecord(user, data)
+		p.Store.SetDataRecord(user, data)
 		w.WriteHeader(http.StatusAccepted)
 	} else {
 		w.WriteHeader(http.StatusNotFound)

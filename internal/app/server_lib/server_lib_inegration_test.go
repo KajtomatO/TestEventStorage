@@ -4,10 +4,12 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/KajtomatO/TestEventStorage/internal/app/storage_memory"
 )
 
 func TestRecordingWinsAndRetrievingThem(t *testing.T) {
-	store := NewInMemoryDataStore()
+	store := storage_memory.NewInMemoryDataStore()
 	server := DataServer{store}
 	user := "Pepper"
 	data := "d1"

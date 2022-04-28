@@ -1,8 +1,9 @@
 package storage_memory
 
 import (
-	"errors"
 	"sync"
+
+	"github.com/KajtomatO/TestEventStorage/internal/app/error_codes"
 )
 
 func NewInMemoryDataStore() *InMemoryDataStore {
@@ -29,8 +30,8 @@ func (i *InMemoryDataStore) GetDataRecord(id string) (string, error) {
 
 	data := i.store[id]
 	if len(data) == 0 {
-		//return "", ErrRecordNotFound
-		return "", errors.New("test error")
+		return "", error_codes.ErrRecordNotFound
+
 	}
 
 	return data, nil
