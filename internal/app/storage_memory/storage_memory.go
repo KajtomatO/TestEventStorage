@@ -31,7 +31,6 @@ func (i *InMemoryDataStore) GetDataRecord(id string) (string, error) {
 	data := i.store[id]
 	if len(data) == 0 {
 		return "", error_codes.ErrRecordNotFound
-
 	}
 
 	return data, nil
