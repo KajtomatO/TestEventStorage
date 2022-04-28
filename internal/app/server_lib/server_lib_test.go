@@ -1,4 +1,4 @@
-package main
+package server_lib
 
 import (
 	"errors"
@@ -58,7 +58,7 @@ func TestGETData(t *testing.T) {
 			expecteddata:       "Trolololo",
 		},
 		{
-			name:               "Returns 404 on missing klient",
+			name:               "Returns 404 on missing client",
 			id:                 "Mike",
 			expectedHTTPStatus: http.StatusNotFound,
 			expecteddata:       "",

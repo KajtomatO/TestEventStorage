@@ -1,4 +1,4 @@
-package main
+package server_lib
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 )
 
 func TestRecordingWinsAndRetrievingThem(t *testing.T) {
-	store := NewInMemoryDataStore{}
+	store := NewInMemoryDataStore()
 	server := DataServer{store}
 	user := "Pepper"
 	data := "d1"
